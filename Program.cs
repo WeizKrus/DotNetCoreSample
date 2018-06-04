@@ -25,7 +25,7 @@ namespace dotnet_core_c_sharp
         }
 
 
-
+#region Create Dictionary
         static Dictionary<string, string> CreateDict1 ()
         {
             Dictionary<string, string> myDict = new Dictionary<string, string> ();
@@ -47,6 +47,7 @@ namespace dotnet_core_c_sharp
 
             return myDict;
         }
+#endregion
 
         static List<(string key, string oldValue, string newValue)> DictionaryDiff(Dictionary<string, string> d1, Dictionary<string, string> d2)
         {
