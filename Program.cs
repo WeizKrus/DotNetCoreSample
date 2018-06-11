@@ -22,8 +22,6 @@ namespace dotnet_core_c_sharp
             foreach (var dif in diff) {
                 Console.WriteLine($"{dif.key}, {dif.oldValue}, {dif.newValue}");
             }
-
-            
         }
 
 
