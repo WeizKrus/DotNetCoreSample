@@ -10,44 +10,24 @@ namespace dotnet_core_c_sharp
         {
             Console.WriteLine ("Hello World!");
 
-            foreach (var valuePair in CreateDict1 ())
-            {
-                Console.WriteLine ($"{{ {valuePair.Key}: {valuePair.Value} }}");
-            }
+            // foreach (var valuePair in DictionaryFactory.CreateDict1 ())
+            // {
+            //     Console.WriteLine ($"{{ {valuePair.Key}: {valuePair.Value} }}");
+            // }
 
-            var dict1 = CreateDict1();
-            var dict2 = CreateDict2();
+            var dict1 = DictionaryFactory.CreateDict1();
+            var dict2 = DictionaryFactory.CreateDict2();
             var diff = DictionaryDiff(dict1, dict2);
+            string originalValue = string.Empty;
+            string currentValue = string.Empty;
 
             foreach (var dif in diff) {
-                Console.WriteLine($"{dif.key}, {dif.oldValue}, {dif.newValue}");
+                originalValue = string.IsNullOrWhiteSpace(dif.oldValue) ? "[null]" : dif.oldValue;
+                currentValue = string.IsNullOrWhiteSpace(dif.newValue) ? "[null]" : dif.newValue;
+
+                Console.WriteLine($"{dif.key}, {originalValue}, {currentValue}");
             }
         }
-
-
-#region Create Dictionary
-        static Dictionary<string, string> CreateDict1 ()
-        {
-            Dictionary<string, string> myDict = new Dictionary<string, string> ();
-
-            myDict.Add ("key 1", "value 1");
-            myDict.Add ("key 2", "value 2");
-            myDict.Add ("key 3", "value 3");
-
-            return myDict;
-        }
-
-        static Dictionary<string, string> CreateDict2 ()
-        {
-            Dictionary<string, string> myDict = new Dictionary<string, string> ();
-
-            myDict.Add ("key 1", null);
-            myDict.Add ("key 2", "value 2");
-            myDict.Add ("key 3", "value 4");
-
-            return myDict;
-        }
-#endregion
 
         static List<(string key, string oldValue, string newValue)> DictionaryDiff(Dictionary<string, string> d1, Dictionary<string, string> d2)
         {
