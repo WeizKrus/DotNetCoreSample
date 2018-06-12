@@ -1,6 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+using System.Threading.Tasks;
+
+=======
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
+using AgEntities.CustomEntities;
+using AgEntities.DataContext;
 
 namespace dotnet_core_c_sharp
 {
@@ -9,11 +16,6 @@ namespace dotnet_core_c_sharp
         static void Main (string[] args)
         {
             Console.WriteLine ("Hello World!");
-
-            // foreach (var valuePair in DictionaryFactory.CreateDict1 ())
-            // {
-            //     Console.WriteLine ($"{{ {valuePair.Key}: {valuePair.Value} }}");
-            // }
 
             var dict1 = DictionaryFactory.CreateDict1();
             var dict2 = DictionaryFactory.CreateDict2();
@@ -27,9 +29,16 @@ namespace dotnet_core_c_sharp
 
                 Console.WriteLine($"{dif.key}, {originalValue}, {currentValue}");
             }
+
+            SavingData();
+            var list = Query();
+
+            list.ForEach(item => Console.WriteLine(item.Url));
         }
 
-        static List<(string key, string oldValue, string newValue)> DictionaryDiff(Dictionary<string, string> d1, Dictionary<string, string> d2)
+        static List<(string key, string oldValue, string newValue)> DictionaryDiff(
+            Dictionary<string, string> d1, 
+            Dictionary<string, string> d2)
         {
             List<(string, string, string)> diffResult = new List<(string, string, string)>();
             
@@ -42,16 +51,6 @@ namespace dotnet_core_c_sharp
                     if (d2.TryGetValue(valuePair.Key, out newValue)) {
                         if (d1.TryGetValue(valuePair.Key, out oldValue))
                         {
-                            // if (oldValue == null)
-                            // {
-                            //     oldValue = string.Empty;
-                            // }
-
-                            // if (newValue == null)
-                            // {
-                            //     newValue = string.Empty;
-                            // }
-
                             if (oldValue != newValue)
                             {
                                 diffResult.Add((valuePair.Key, oldValue, newValue));
@@ -65,6 +64,38 @@ namespace dotnet_core_c_sharp
                 throw ex;
             }
             return diffResult;
+        }
+
+<<<<<<< HEAD
+        static async Task SavingData() 
+=======
+        static void SavingData() 
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
+        {
+            using (var db = new BloggingContext())
+            {
+                var blog = new Blog { Url = @"http//sample.com" };
+                db.Blog.Add(blog);
+                db.SaveChanges();
+            }
+<<<<<<< HEAD
+=======
+            
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
+        }
+
+        static List<Blog> Query()
+        {
+            List<Blog> blog = null;
+
+            using (var db = new BloggingContext())
+            {
+                blog = db.Blog
+                    .OrderBy(b => b.Url)
+                    .ToList();
+            }
+
+            return blog;
         }
     }
 }
