@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
+=======
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
 using System.Collections.Generic;
 
 namespace AgEntities.CustomEntities
@@ -10,4 +13,8 @@ namespace AgEntities.CustomEntities
         public int Rating { get; set; }
         public List<Post> Posts { get; set; }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa

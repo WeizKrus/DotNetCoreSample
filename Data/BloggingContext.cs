@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
+=======
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
 using AgEntities.CustomEntities;
 
 namespace AgEntities.DataContext
@@ -15,6 +20,7 @@ namespace AgEntities.DataContext
     {
         private bool created = false;
 
+<<<<<<< HEAD
         public BloggingContext ()
         {
             if (!created)
@@ -40,6 +46,25 @@ namespace AgEntities.DataContext
             modelBuilder.Entity<Post> ();
 
             modelBuilder.Entity<Audit> ();
+=======
+        public BloggingContext()
+        { 
+            if (!created) {
+                created = !created;
+                // Database.EnsureDeleted();
+                Database.EnsureCreated();
+            }
+        }
+
+        public DbSet<Blog> Blog { get; set; }
+        public DbSet<Post> Posts { get; set; }
+
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Blog>();
+            modelBuilder.Entity<Post>();
+            modelBuilder.Entity<AuditEntry>();
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
@@ -47,6 +72,7 @@ namespace AgEntities.DataContext
             string sqliteString = @"Data Source=blog.db";
             optionsBuilder.UseSqlite (sqliteString);
         }
+<<<<<<< HEAD
 
         public override int SaveChanges() 
         {
@@ -150,5 +176,7 @@ namespace AgEntities.DataContext
             // return SaveChangesAsync ();
             return SaveChanges();
         }
+=======
+>>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
     }
 }
