@@ -28,7 +28,7 @@ namespace dotnet_core_c_sharp
 
             return myDict;
         }
-#endregion
+
         public static Dictionary<string, string> CreateDict3 ()
         {
             Dictionary<string, string> myDict = new Dictionary<string, string> ();
@@ -39,5 +39,6 @@ namespace dotnet_core_c_sharp
 
             return myDict;
         }
+        #endregion
     }
 }
