@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
 using System.Threading.Tasks;
 
-=======
->>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
 using AgEntities.CustomEntities;
 using AgEntities.DataContext;
 
@@ -66,11 +63,7 @@ namespace dotnet_core_c_sharp
             return diffResult;
         }
 
-<<<<<<< HEAD
         static async Task SavingData() 
-=======
-        static void SavingData() 
->>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
         {
             using (var db = new BloggingContext())
             {
@@ -78,10 +71,6 @@ namespace dotnet_core_c_sharp
                 db.Blog.Add(blog);
                 db.SaveChanges();
             }
-<<<<<<< HEAD
-=======
-            
->>>>>>> f65938ceca5ffdef9bf74938536ac4fcfd1c45fa
         }
 
         static List<Blog> Query()
